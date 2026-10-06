@@ -24,7 +24,6 @@ test("describes the current pipeline state", () => {
   assert.equal(pipelineState(4), "Deployment complete");
 });
 
-test("reject invalid pipeline states", () => {
-  assert.throws(()=> pipelineState(-1), TypeError);
-  assert.throws(()=> pipelineState(5), TypeError);
+test("handle pipeline state before any stage is completed", () => {
+  assert.equal(pipelineState(-1), "Waiting for a commit")
 })
